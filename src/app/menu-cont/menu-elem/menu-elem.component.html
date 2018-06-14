@@ -1,4 +1,8 @@
-<div>
+<li 
+class="list-group-item list-group-item-action"
+(click)="onSelected()"
+[ngClass]="{'active': isActive}"
+style="cursor: pointer;">
   <h4>{{ character.name }}</h4>
   <h5 class="font-weight-light">Born:
     <span>{{ character.birth }}</span>
@@ -6,4 +10,4 @@
   <h6 class="font-weight-light">Species:
     <span>{{ character.gender }}</span>
   </h6>
-</div>
+</li>

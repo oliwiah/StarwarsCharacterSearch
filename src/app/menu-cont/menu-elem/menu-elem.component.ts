@@ -9,6 +9,7 @@ import { CharacterService } from '../../StarwarsCharacter.service';
 })
 export class MenuElemComponent implements OnInit {
   @Input() character: Character;
+  @Input() isActive = false;
 
   constructor(private characterService: CharacterService) {}
 
@@ -16,5 +17,7 @@ export class MenuElemComponent implements OnInit {
 
   onSelected() {
     this.characterService.characterSelected.emit(this.character);
+    console.log('the character has been chosen');
+    this.isActive = !this.isActive;
   }
 }

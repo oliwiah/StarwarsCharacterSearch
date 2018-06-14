@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CharacterService } from './StarwarsCharacter.service';
 import { Character } from './character.model';
 
@@ -10,7 +10,7 @@ import { Character } from './character.model';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  selecectedCharacter: Character;
+  @Input() selecectedCharacter: Character;
 
   constructor(private characterService: CharacterService) { }
 
