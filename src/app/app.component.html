@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <!-- <app-menu-cont
+      *ngIf="selectedCharacter; else infoText"
+      [character]="selectedCharacter"></app-menu-cont> -->
+      <app-menu-cont></app-menu-cont>
+    </div>
+    <ng-template #infoText>
+      <p>Please select a Character</p>
+    </ng-template>
+    <div class="col-8">
+      <app-profile></app-profile>
+    </div>
+  </div>
+</div>

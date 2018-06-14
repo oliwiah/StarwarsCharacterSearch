@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <!-- add class active onclick !-->
+  <li class="list-group-item list-group-item-action">
+    <app-menu-elem
+    *ngFor="let characterEl of characters"
+    [character]="characterEl"></app-menu-elem>
+  </li>
+</ul>
