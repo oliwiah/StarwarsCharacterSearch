@@ -1,30 +1,30 @@
 export class Character {
   public name: string;
-  public birth: string;
+  public birth_year: string;
   public height: number;
   public mass: number;
-  public hair: string;
-  public skin: string;
-  public gender: string;
-  public vehicle: number;
+  public hair_color: string;
+  public skin_color: string;
+  public species: string;
+  public vehicles: number;
 
   constructor(
     name: string,
-    birth: string,
+    birth_year: string,
     height: number,
     mass: number,
-    hair: string,
-    skin: string,
-    gender: string,
-    vehicle: number
+    hair_color: string,
+    skin_color: string,
+    species: string,
+    vehicles: number
   ) {
     this.name = name;
-    this.birth = birth;
+    this.birth_year = birth_year;
     this.height = height;
     this.mass = mass;
-    this.hair = hair;
-    this.skin = skin;
-    this.gender = gender;
-    this.vehicle = vehicle;
+    this.hair_color = hair_color;
+    this.skin_color = skin_color;
+    this.species = species;
+    this.vehicles = vehicles;
   }
 }

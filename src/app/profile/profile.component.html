@@ -1,37 +1,37 @@
 <h1>{{ character.name }}</h1>
-<h2>Character's specie</h2>
+<h2 *ngFor="let species of character.species">{{ species.name }}</h2>
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     birth year
-    <span class="badge badge-primary badge-pill">14</span>
+    <span class="badge badge-primary badge-pill">{{ character.birth_year }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     height
-    <span class="badge badge-primary badge-pill">144</span>
+    <span class="badge badge-primary badge-pill">{{ character.height }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     mass
-    <span class="badge badge-primary badge-pill">114</span>
+    <span class="badge badge-primary badge-pill">{{ character.mass }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     hair color
-    <span class="badge badge-primary badge-pill">14</span>
+    <span class="badge badge-primary badge-pill">{{ character.hair_color }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     skin color
-    <span class="badge badge-primary badge-pill">142</span>
+    <span class="badge badge-primary badge-pill">{{ character.skin_color }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     gender
-    <span class="badge badge-primary badge-pill">134</span>
+    <span class="badge badge-primary badge-pill">{{ character.gender }}</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     number of vehicles
-    <span class="badge badge-primary badge-pill">14</span>
+    <span class="badge badge-primary badge-pill">{{ character.vehicles.length }}</span>
+
   </li>
 </ul>
-<h2>starships:</h2>
-<ul>
-  <li>X-wing</li>
-  <li>Y-leg</li>
+<h2 *ngIf="character.starships.length">starships:</h2>
+<ul *ngFor="let starship of character.starships">
+  <li>{{ starship.name }}</li>
 </ul>

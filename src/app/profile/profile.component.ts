@@ -9,9 +9,5 @@ import { Character } from '../character.model';
 export class ProfileComponent implements OnInit {
   @Input() character: Character;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

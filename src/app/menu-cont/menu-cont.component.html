@@ -1,6 +1,10 @@
+
 <ul class="list-group">
+    <div class="btn-group justify-content-between" role="group">
+        <button type="button" class="btn btn-outline-secondary w-50" (click)="getPrevPage()">Prev</button>
+        <button type="button" class="btn btn-outline-secondary w-50" (click)="getNextPage()">Next</button>
+      </div>
   <!-- add class active onclick !-->
-    <app-menu-elem
-    *ngFor="let characterEl of characters"
-    [character]="characterEl"></app-menu-elem>
+  <app-menu-elem *ngFor="let character of (characters$ | async)" [character]="character">
+  </app-menu-elem>
 </ul>

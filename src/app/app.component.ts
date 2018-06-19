@@ -10,7 +10,7 @@ import { Character } from './character.model';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  @Input() selecectedCharacter: Character;
+  @Input() selectedCharacter: Character;
 
   constructor(private characterService: CharacterService) { }
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.characterService.characterSelected
       .subscribe(
         (character: Character) => {
-          this.selecectedCharacter = character;
+          this.selectedCharacter = character;
         }
       );
   }

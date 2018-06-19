@@ -7,6 +7,8 @@ import { MenuContComponent } from './menu-cont/menu-cont.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuElemComponent } from './menu-cont/menu-elem/menu-elem.component';
 import { CharacterService } from './StarwarsCharacter.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { CharacterService } from './StarwarsCharacter.service';
     MenuElemComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [CharacterService],
   bootstrap: [AppComponent]

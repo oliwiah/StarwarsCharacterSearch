@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Character } from '../character.model';
 import { CharacterService } from '../StarwarsCharacter.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu-cont',
@@ -8,12 +9,20 @@ import { CharacterService } from '../StarwarsCharacter.service';
   styleUrls: ['./menu-cont.component.css']
 })
 export class MenuContComponent implements OnInit {
-  characters: Character[];
+  characters$: Observable<Character[]>;
 
-  constructor(private characterService: CharacterService) { }
+  constructor(private characterService: CharacterService) {}
 
-  ngOnInit() {
-    this.characters = this.characterService.getCharacterMethod();
+  getNextPage(): void {
+    this.characters$ = this.characterService.getNextCharacters();
+  }
+
+  getPrevPage(): void {
+    this.characters$ = this.characterService.getPrevCharacters();
+  }
+
+  ngOnInit(): void {
+    this.getNextPage();
   }
 
 }

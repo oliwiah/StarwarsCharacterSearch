@@ -17,7 +17,11 @@ export class MenuElemComponent implements OnInit {
 
   onSelected() {
     this.characterService.characterSelected.emit(this.character);
-    console.log('the character has been chosen');
     this.isActive = !this.isActive;
+
+    // this.characterService.getDetails()
+    //   .subscribe(data => {
+    //     console.log(data);
+    //   });
   }
 }

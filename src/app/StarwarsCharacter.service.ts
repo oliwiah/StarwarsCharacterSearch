@@ -1,17 +1,68 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Character } from './character.model';
+import { Observable, zip } from 'rxjs';
+import { map, mergeMap, tap } from 'rxjs/operators';
+import { chain, curry } from 'lodash';
 
 @Injectable()
 export class CharacterService {
   characterSelected = new EventEmitter<Character>();
+  url = 'https://swapi.co/api/people/?page=1';
+  nextUrl: string;
+  prevUrl: string;
 
-  private characters: Character[] = [
-    new Character('Luke', '123', 234, 45, 'blue', 'white', 'male', 4),
-    new Character('Anne', '46', 757, 12, 'blue', 'white', 'female', 1),
-    new Character('Blah', '3', 857, 12, 'blue', 'white', 'male', 0)
-  ];
+  constructor(private http: HttpClient) {}
 
-  getCharacterMethod() {
-      return this.characters.slice();
+  getNextCharacters() {
+    const url = this.nextUrl || this.url;
+    return this.getCharacters(url);
   }
+
+  getPrevCharacters() {
+    const url = this.prevUrl || this.url;
+    return this.getCharacters(url);
+  }
+
+  getSearchedCharacters(searchPhrase: string) {
+    const url = `${this.url}&name=${searchPhrase}`;
+    return this.getCharacters(url);
+  }
+
+  getCharacters(url: string): Observable<Character[]> {
+    return this.http.get<any>(url)
+      .pipe(
+        tap(res => this.nextUrl = res.next),
+        map(res => res.results),
+        mergeMap(chars =>
+          zip(...chain(chars)
+            .map(char => [char.species, char.starships])
+            .flattenDeep()
+            .uniq()
+            .map(species => this.http.get(species))
+            .value()
+          ), (chars, responses) =>
+            chars.map(char => {
+              const findFunc = curry((targetUrl, obj) => obj['url'] === targetUrl);
+              const species = char.species.map(
+                speciesUrl => responses.find(findFunc(speciesUrl))
+              );
+              const starships = char.starships.map(
+                starshipUrl => responses.find(findFunc(starshipUrl))
+              );
+              return Object.assign(char, { species, starships });
+            })));
+  }
+
+
+  // getDetails(): Observable<Character[]> {
+  //   return this.http.get<any>(this.url)
+  //     .pipe(
+  //       map(res => res.results)
+  //       map(res => res.results[0].vehicles)
+  //       map(res => res.results[0].starships)
+  //     )
+
+
+  // }
 }
