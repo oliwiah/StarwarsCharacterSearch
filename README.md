@@ -1,6 +1,6 @@
 # Star Wars Character Search
 
-This project is a Sigle Page Application allowing you to search through all of the Star Wars characters using [The Star Wars API](https://swapi.co/).
+This project is a Single Page Application allowing you to search through all of the Star Wars characters using [The Star Wars API](https://swapi.co/).
 
 ## Technologies used
 * JavaScript
@@ -15,7 +15,7 @@ This project is a Sigle Page Application allowing you to search through all of t
 
 ## Functionality
 
-The user may search the character by name.
+The user may search the character by its name.
 
 10 characters are being loaded on one page. To show previous or next page, another API request to the API is being sent.
 
