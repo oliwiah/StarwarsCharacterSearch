@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu-cont',
-  templateUrl: './menu-cont.component.html',
-  styleUrls: ['./menu-cont.component.css']
+  templateUrl: './menu-cont.component.html'
 })
 export class MenuContComponent implements OnInit {
   characters$: Observable<Character[]>;

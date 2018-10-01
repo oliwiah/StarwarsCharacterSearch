@@ -53,16 +53,4 @@ export class CharacterService {
               return Object.assign(char, { species, starships });
             })));
   }
-
-
-  // getDetails(): Observable<Character[]> {
-  //   return this.http.get<any>(this.url)
-  //     .pipe(
-  //       map(res => res.results)
-  //       map(res => res.results[0].vehicles)
-  //       map(res => res.results[0].starships)
-  //     )
-
-
-  // }
 }

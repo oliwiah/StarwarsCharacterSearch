@@ -4,8 +4,7 @@ import { CharacterService } from '../../StarwarsCharacter.service';
 
 @Component({
   selector: 'app-menu-elem',
-  templateUrl: './menu-elem.component.html',
-  styleUrls: ['./menu-elem.component.css']
+  templateUrl: './menu-elem.component.html'
 })
 export class MenuElemComponent implements OnInit {
   @Input() character: Character;
