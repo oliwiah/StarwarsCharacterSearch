@@ -13,6 +13,9 @@ This project is a Single Page Application allowing you to search through all of 
 * Surge
 * TSLint
 
+## Demo
+![Star Wars app view](app_view.png)
+
 ## Functionality
 
 The user may search the character by its name.
