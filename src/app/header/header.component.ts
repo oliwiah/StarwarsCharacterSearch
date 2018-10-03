@@ -5,8 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  @Input() character: Character;
 
-  constructor() { }
+  constructor(private characterService: CharacterService) {}
+
+  getSearched(name): void {
+    this.characterService.getSearchedCharacters(name);
+  }
 
   ngOnInit() {
   }
